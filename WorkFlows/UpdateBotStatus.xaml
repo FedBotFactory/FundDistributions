@@ -1,11 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="UpdateBotStatus" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="UpdateBotStatus" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_dtMainData" Type="InArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_BotStatus" Type="InArgument(x:String)" />
     <x:Property Name="in_BotComments" Type="InArgument(x:String)" />
     <x:Property Name="in_ColumnValue" Type="InArgument(x:String)" />
-    <x:Property Name="in_GeneratedTransactionNumber" Type="InArgument(x:String)" />
     <x:Property Name="in_ColumnName" Type="InArgument(x:String)" />
   </x:Members>
   <this:UpdateBotStatus.in_BotStatus>
@@ -14,13 +13,10 @@
   <this:UpdateBotStatus.in_BotComments>
     <InArgument x:TypeArguments="x:String" />
   </this:UpdateBotStatus.in_BotComments>
-  <this:UpdateBotStatus.in_GeneratedTransactionNumber>
-    <InArgument x:TypeArguments="x:String" />
-  </this:UpdateBotStatus.in_GeneratedTransactionNumber>
-  <sap:VirtualizedContainerService.HintSize>1150,753.333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,813.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="28">
+    <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
@@ -49,6 +45,8 @@
       <x:String>System.Net.Mail</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -84,22 +82,21 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtMainData]" DisplayName="UpdateBotStatus" sap:VirtualizedContainerService.HintSize="586,688.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtMainData]" DisplayName="UpdateBotStatus" sap:VirtualizedContainerService.HintSize="632,748.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
     <ui:ForEachRow.Body>
       <ActivityAction x:TypeArguments="sd:DataRow">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
         </ActivityAction.Argument>
-        <Sequence sap:VirtualizedContainerService.HintSize="552,570" sap2010:WorkflowViewState.IdRef="Sequence_49">
+        <Sequence sap:VirtualizedContainerService.HintSize="598,620" sap2010:WorkflowViewState.IdRef="Sequence_49">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[row(in_ColumnName).ToString= in_ColumnValue]" DisplayName="If UTI matches with Transaction Item" sap:VirtualizedContainerService.HintSize="510,478" sap2010:WorkflowViewState.IdRef="If_10">
+          <If Condition="[row(in_ColumnName).ToString= in_ColumnValue]" DisplayName="If UTI matches with Transaction Item" sap:VirtualizedContainerService.HintSize="556,530" sap2010:WorkflowViewState.IdRef="If_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -107,24 +104,16 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Assign Column Values" sap:VirtualizedContainerService.HintSize="473.333333333333,283.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_46">
+              <Sequence DisplayName="Assign Column Values" sap:VirtualizedContainerService.HintSize="473.3333333333333,260.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_46">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MultipleAssign DisplayName="Assign Output Column Values" sap:VirtualizedContainerService.HintSize="431.333333333333,191.333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign DisplayName="Assign Output Column Values" sap:VirtualizedContainerService.HintSize="431.3333333333333,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                   <ui:MultipleAssign.AssignOperations>
                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_TransactionNumber").ToString)]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:Object">[in_GeneratedTransactionNumber]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
                         <ui:AssignOperation.To>
                           <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_BotStatus").ToString)]</OutArgument>
