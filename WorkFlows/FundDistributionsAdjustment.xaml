@@ -4,6 +4,14 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_MasterRow" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_Number" Type="InArgument(x:String)" />
+    <x:Property Name="out_strApportionmentCategory" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strTreasuryAccountSymbol" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strGetDirectorReimbursableCode" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strDocumentTotal" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strStatus" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strSource" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strAmountForDistribution" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strDecisionMsg" Type="OutArgument(x:String)" />
   </x:Members>
   <this:FundDistributionsAdjustment.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
@@ -336,10 +344,42 @@
             </ui:ForEach>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterFundDistributionsMainTabFields workflow" sap:VirtualizedContainerService.HintSize="482.6666666666667,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="WorkFlows\EnterFundDistributionsMainTabFields.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtBatch">[in_dtBatch]</InArgument>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_MasterRow">[in_MasterRow]</InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_Index">[intIndex]</InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtBatch">
+                  <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dtBatch" />
+                </InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                </InArgument>
+                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_MasterRow">
+                  <VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_MasterRow" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_Index">
+                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intIndex" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strApportionmentCategory">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strApportionmentCategory" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strTreasuryAccountSymbol">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strTreasuryAccountSymbol" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strGetDirectorReimbursableCode">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strGetDirectorReimbursableCode" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strDocumentTotal">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDocumentTotal" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strSource">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strSource" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strAmountForDistribution">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strAmountForDistribution" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_strDecisionMsg">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDecisionMsg" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>
