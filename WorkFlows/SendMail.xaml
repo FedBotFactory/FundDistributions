@@ -4,8 +4,8 @@
     <x:Property Name="in_blnHasAttachment" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_To" Type="InArgument(x:String)" />
     <x:Property Name="in_Subject" Type="InArgument(x:String)" />
-    <x:Property Name="in_Body" Type="InArgument(x:String)" />
     <x:Property Name="in_StrFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strEmailBody" Type="InArgument(x:String)" />
   </x:Members>
   <this:SendMail.in_Config>
     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" />
@@ -19,13 +19,13 @@
   <this:SendMail.in_Subject>
     <InArgument x:TypeArguments="x:String" />
   </this:SendMail.in_Subject>
-  <this:SendMail.in_Body>
+  <this:SendMail.in_strEmailBody>
     <InArgument x:TypeArguments="x:String" />
-  </this:SendMail.in_Body>
-  <sap:VirtualizedContainerService.HintSize>1150,1093.33333333333</sap:VirtualizedContainerService.HintSize>
+  </this:SendMail.in_strEmailBody>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,1220.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="32">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System</x:String>
@@ -58,10 +58,12 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -96,28 +98,32 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send a notification of business user with report attached.&#xA;Delete report if mail is sent succesfully.   &#xA;In case of error in sending mail, do not delete report and display error message to user with location of report. " DisplayName="SendMail" sap:VirtualizedContainerService.HintSize="480.666666666667,1028.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Send a notification of business user with report attached.&#xA;Delete report if mail is sent succesfully.   &#xA;In case of error in sending mail, do not delete report and display error message to user with location of report. " DisplayName="SendMail" sap:VirtualizedContainerService.HintSize="480.6666666666667,1156" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438.666666666667,858" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438.6666666666667,1066" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="blnSendMail" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence DisplayName="Send Outlook Mail" sap:VirtualizedContainerService.HintSize="376,620" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Send Outlook Mail" sap:VirtualizedContainerService.HintSize="400,818" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:Int32" Name="IntRecordsCount" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Reset SendMailFlag to True" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Reset SendMailFlag to True" sap:VirtualizedContainerService.HintSize="358,72" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[blnSendMail]</OutArgument>
             </Assign.To>
@@ -125,19 +131,19 @@
               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Send Mail" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[in_Config(&quot;Log_SendMail&quot;).ToString]" />
-          <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Mail_Account&quot;).ToString]" Body="[in_Body]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,156.666666666667" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" TimeoutMS="[CInt(in_Config(&quot;Mail_TimeOut&quot;).ToString)]" To="[in_To]">
+          <ui:LogMessage DisplayName="Log Send Mail" sap:VirtualizedContainerService.HintSize="358,151.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[in_Config(&quot;Log_SendMail&quot;).ToString]" />
+          <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" Account="[in_Config(&quot;Mail_Account&quot;).ToString]" Body="[in_strEmailBody]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="358,233.33333333333334" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" TimeoutMS="[CInt(in_Config(&quot;Mail_TimeOut&quot;).ToString)]" To="[in_To]">
             <ui:SendOutlookMail.Files>
               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                 <InArgument x:TypeArguments="x:String">[in_StrFilePath]</InArgument>
               </scg:List>
             </ui:SendOutlookMail.Files>
           </ui:SendOutlookMail>
-          <ui:LogMessage DisplayName="Log SendMail - Success" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_Config(&quot;Log_SendMailSuccess&quot;).ToString]" />
+          <ui:LogMessage DisplayName="Log SendMail - Success" sap:VirtualizedContainerService.HintSize="358,151.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_Config(&quot;Log_SendMailSuccess&quot;).ToString]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -148,7 +154,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SendMail Error" sap:VirtualizedContainerService.HintSize="376,288.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="SendMail Error" sap:VirtualizedContainerService.HintSize="400,286.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>

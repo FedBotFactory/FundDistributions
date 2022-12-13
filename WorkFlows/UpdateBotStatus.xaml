@@ -6,6 +6,14 @@
     <x:Property Name="in_BotComments" Type="InArgument(x:String)" />
     <x:Property Name="in_ColumnValue" Type="InArgument(x:String)" />
     <x:Property Name="in_ColumnName" Type="InArgument(x:String)" />
+    <x:Property Name="in_strApportionmentCategory" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTreasuryAccountSymbol" Type="InArgument(x:String)" />
+    <x:Property Name="in_strGetDirectorReimbursableCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDocumentTotal" Type="InArgument(x:String)" />
+    <x:Property Name="in_strStatus" Type="InArgument(x:String)" />
+    <x:Property Name="in_strSource" Type="InArgument(x:String)" />
+    <x:Property Name="in_strAmountForDistribution" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDecisionMsg" Type="InArgument(x:String)" />
   </x:Members>
   <this:UpdateBotStatus.in_BotStatus>
     <InArgument x:TypeArguments="x:String" />
@@ -13,7 +21,7 @@
   <this:UpdateBotStatus.in_BotComments>
     <InArgument x:TypeArguments="x:String" />
   </this:UpdateBotStatus.in_BotComments>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,813.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>622,1058.6666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -50,7 +58,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -82,21 +90,22 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtMainData]" DisplayName="UpdateBotStatus" sap:VirtualizedContainerService.HintSize="632,748.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtMainData]" DisplayName="UpdateBotStatus" sap:VirtualizedContainerService.HintSize="632,994" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
     <ui:ForEachRow.Body>
       <ActivityAction x:TypeArguments="sd:DataRow">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
         </ActivityAction.Argument>
-        <Sequence sap:VirtualizedContainerService.HintSize="598,620" sap2010:WorkflowViewState.IdRef="Sequence_49">
+        <Sequence sap:VirtualizedContainerService.HintSize="598,865.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_49">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[row(in_ColumnName).ToString= in_ColumnValue]" DisplayName="If UTI matches with Transaction Item" sap:VirtualizedContainerService.HintSize="556,530" sap2010:WorkflowViewState.IdRef="If_10">
+          <If Condition="[row(in_ColumnName).ToString= in_ColumnValue]" DisplayName="If UTI matches with Transaction Item" sap:VirtualizedContainerService.HintSize="556,775.3333333333334" sap2010:WorkflowViewState.IdRef="If_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -104,16 +113,16 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Assign Column Values" sap:VirtualizedContainerService.HintSize="473.3333333333333,260.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_46">
+              <Sequence DisplayName="Assign Column Values" sap:VirtualizedContainerService.HintSize="473.3333333333333,506" sap2010:WorkflowViewState.IdRef="Sequence_46">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MultipleAssign DisplayName="Assign Output Column Values" sap:VirtualizedContainerService.HintSize="431.3333333333333,170.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign DisplayName="Assign Output Column Values" sap:VirtualizedContainerService.HintSize="431.3333333333333,416" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                   <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
                         <ui:AssignOperation.To>
                           <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_BotStatus").ToString)]</OutArgument>
@@ -138,13 +147,77 @@
                           <InArgument x:TypeArguments="x:Object">[Now.ToString]</InArgument>
                         </ui:AssignOperation.Value>
                       </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_ApportionmentCategory").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strApportionmentCategory]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_TreasuryAccountSymbol").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strTreasuryAccountSymbol]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_DirectOrReimbursableCode").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strGetDirectorReimbursableCode]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_DocumentTotal").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strDocumentTotal]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_Status").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strStatus]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_AmountForDistribution").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strAmountForDistribution]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_Source").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strSource]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(in_Config("ColName_CheckFundsMessage").ToString)]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:Object">[in_strDecisionMsg]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
                     </scg:List>
                   </ui:MultipleAssign.AssignOperations>
                 </ui:MultipleAssign>
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="200,84.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_44">
+              <Sequence sap:VirtualizedContainerService.HintSize="400,82.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_44">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>

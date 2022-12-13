@@ -4,7 +4,7 @@
     <x:Property Name="in_strInputFilePath" Type="InArgument(x:String)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,2107.3333333333335</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,6476</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -70,9 +70,10 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="1. Read Invoice Transactions Input File&#xA;2. Add 'Status', 'Bot Status' and 'Bot Comments' Columns if doesn't exist&#xA;3  Proceed futher if 'Bot Status' is empty for any of the rows" DisplayName="Read Invoice Transactions Input File" sap:VirtualizedContainerService.HintSize="526,2042.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1. Read Invoice Transactions Input File&#xA;2. Add 'Status', 'Bot Status' and 'Bot Comments' Columns if doesn't exist&#xA;3  Proceed futher if 'Bot Status' is empty for any of the rows" DisplayName="Read Invoice Transactions Input File" sap:VirtualizedContainerService.HintSize="476,6411.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtBotStatusEmpty" />
     </Sequence.Variables>
@@ -82,23 +83,63 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dtMainData]" DisplayName="Read Input File" sap:VirtualizedContainerService.HintSize="484,96.66666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;SheetName_InputFile&quot;).ToString]" WorkbookPath="[in_strInputFilePath]" />
-    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotStatus&quot;).ToString)]" DisplayName="Check Column -  Bot Status " sap:VirtualizedContainerService.HintSize="484,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_dtMainData]" DisplayName="Read Input File" sap:VirtualizedContainerService.HintSize="434,96.66666666666667" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;SheetName_InputFile&quot;).ToString]" WorkbookPath="[in_strInputFilePath]" />
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_ApportionmentCategory&quot;).ToString)]" DisplayName="Check Column -  Apportionment Category" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_ApportionmentCategory&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Apportionment Category' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_TreasuryAccountSymbol&quot;).ToString)]" DisplayName="Check Column -  Treasury Account Symbol " sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_6">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_TreasuryAccountSymbol&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'ColName_TreasuryAccountSymbol' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_DirectOrReimbursableCode&quot;).ToString)]" DisplayName="Check Column -  Direct Or Reimbursable Code" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_7">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_DirectOrReimbursableCode&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Direct Or Reimbursable Code' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_DocumentTotal&quot;).ToString)]" DisplayName="Check Column -  Document Total" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_8">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_DocumentTotal&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Document Total' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_Status&quot;).ToString)]" DisplayName="Check Column - Status " sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_9">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_Status&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Status' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_8" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_AmountForDistribution&quot;).ToString)]" DisplayName="Check Column -  Amount for Distribution" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_10">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_AmountForDistribution&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Amount for Distribution' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_Source&quot;).ToString)]" DisplayName="Check Column -  Source " sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_11">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_Source&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Source' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_10" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_CheckFundsMessage&quot;).ToString)]" DisplayName="Check Column - Check Funds Decision Message " sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_12">
+      <If.Then>
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_CheckFundsMessage&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'Check Funds Decision Message' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_11" />
+      </If.Then>
+    </If>
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotStatus&quot;).ToString)]" DisplayName="Check Column -  Bot Status " sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_BotStatus&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'BotStatus' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
       </If.Then>
     </If>
-    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotComments&quot;).ToString)]" DisplayName="Check Column -  Bot Comments" sap:VirtualizedContainerService.HintSize="484,384.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotComments&quot;).ToString)]" DisplayName="Check Column -  Bot Comments" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_BotComments&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'BotComments' Column" sap:VirtualizedContainerService.HintSize="334,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_BotComments&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'BotComments' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
       </If.Then>
     </If>
-    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotTimeStamp&quot;).ToString)]" DisplayName="Check Column -  TimeStamp" sap:VirtualizedContainerService.HintSize="484,384.666666666667" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[not out_dtMainData.Columns.Contains(in_Config(&quot;ColName_BotTimeStamp&quot;).ToString)]" DisplayName="Check Column -  TimeStamp" sap:VirtualizedContainerService.HintSize="434,469.3333333333333" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
-        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_BotTimeStamp&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'TimeStamp' Column" sap:VirtualizedContainerService.HintSize="334,190" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
+        <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="[in_Config(&quot;ColName_BotTimeStamp&quot;).ToString]" DataTable="[out_dtMainData]" DisplayName="Add 'TimeStamp' Column" sap:VirtualizedContainerService.HintSize="334,200" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
       </If.Then>
     </If>
-    <ui:FilterDataTable DataTable="[out_dtMainData]" DisplayName="Filter data with empty Bot Status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="484,162.666666666667" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtBotStatusEmpty]" SelectColumnsMode="Keep">
+    <ui:FilterDataTable DataTable="[out_dtMainData]" DisplayName="Filter data with empty Bot Status" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="434,172.66666666666666" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtBotStatusEmpty]" SelectColumnsMode="Keep">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
@@ -114,7 +155,7 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <If Condition="[dtBotStatusEmpty.Rows.Count = 0]" DisplayName="If No Rows Found with 'Bot Status Empty'" sap:VirtualizedContainerService.HintSize="484,254.666666666667" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[dtBotStatusEmpty.Rows.Count = 0]" DisplayName="If No Rows Found with 'Bot Status Empty'" sap:VirtualizedContainerService.HintSize="434,369.3333333333333" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <Throw DisplayName="NoRows - Initial check" Exception="[New SystemException(in_Config(&quot;SE_ErrMsg_NoEmptyBotStatusRowsFound&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>

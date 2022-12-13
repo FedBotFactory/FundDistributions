@@ -7,7 +7,7 @@
   <this:ValidateFundDistributionFieldEntry.in_Index>
     <InArgument x:TypeArguments="x:String" />
   </this:ValidateFundDistributionFieldEntry.in_Index>
-  <sap:VirtualizedContainerService.HintSize>802,1525.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,4586</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -79,9 +79,10 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ValidateFundDistributionFieldEntry" sap:VirtualizedContainerService.HintSize="473.3333333333333,1460.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_45">
+  <Sequence DisplayName="ValidateFundDistributionFieldEntry" sap:VirtualizedContainerService.HintSize="558.6666666666666,4521.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_45">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strAgency" />
       <Variable x:TypeArguments="x:String" Name="strFund" />
@@ -105,7 +106,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Assign GL Account Variables" sap:VirtualizedContainerService.HintSize="431.3333333333333,508" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:LogMessage DisplayName="Log Message -Validate Fund Distribution field" sap:VirtualizedContainerService.HintSize="516.6666666666666,151.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[in_Config(&quot;Log_ValidateFundDistributionField&quot;).ToString]" />
+    <ui:MultipleAssign DisplayName="Assign GL Account Variables" sap:VirtualizedContainerService.HintSize="516.6666666666666,508" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -229,7 +231,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <Assign DisplayName="Build GL Account" sap:VirtualizedContainerService.HintSize="431.3333333333333,72" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Build GL Account" sap:VirtualizedContainerService.HintSize="516.6666666666666,72" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strFundDistribution]</OutArgument>
       </Assign.To>
@@ -237,7 +239,7 @@
         <InArgument x:TypeArguments="x:String">[strAgency+"."+strFund+"."+strFiscalYear+"."+strProgramProject+"."+strActivity+"."+strStrategicGoal+"."+strFundingOrg+"."+strManagingUnit+"."+strCostCenter+"."+strObjectClass+"."+strGLAccount+"."+strFuture1+"."+strFuture2+"."+strFuture3]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Fund Distribution field" sap:VirtualizedContainerService.HintSize="431.3333333333333,144" sap2010:WorkflowViewState.IdRef="TypeInto_16" SimulateType="True" Text="[strFundDistribution]">
+    <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Fund Distribution field" sap:VirtualizedContainerService.HintSize="516.6666666666666,144" sap2010:WorkflowViewState.IdRef="TypeInto_16" SimulateType="True" Text="[strFundDistribution]">
       <ui:TypeInto.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01c6a19f-cfbc-4aa2-94e6-a292bae5d566" InformativeScreenshot="becdf146bdc1ed0f3ac66ae1d4064e10" Selector="[String.Format(&quot;&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java idx='{0}' name='Fund Distribution RequiredList of Values' role='text' /&gt;&quot;, in_Index)]">
           <ui:Target.TimeoutMS>
@@ -249,7 +251,7 @@
         </ui:Target>
       </ui:TypeInto.Target>
     </ui:TypeInto>
-    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="Press tab key at Fund Distribution field" sap:VirtualizedContainerService.HintSize="431.3333333333333,165.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_11" Key="tab" KeyModifiers="Shift" SendWindowMessages="True" SpecialKey="True">
+    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="Press tab key at Fund Distribution field" sap:VirtualizedContainerService.HintSize="516.6666666666666,165.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_11" Key="tab" KeyModifiers="Shift" SendWindowMessages="True" SpecialKey="True">
       <ui:SendHotkey.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f42f2d97-9d9c-49c0-9a39-780aae1f7cba" InformativeScreenshot="68c8f45f592e40de726ab19d700a6bfa" Selector="[String.Format(&quot;&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java idx='{0}' name='Fund Distribution RequiredList of Values' role='text' /&gt;&quot;, in_Index)]">
           <ui:Target.TimeoutMS>
@@ -261,22 +263,22 @@
         </ui:Target>
       </ui:SendHotkey.Target>
     </ui:SendHotkey>
-    <ui:UiElementExists DisplayName="DOL_Demo Displayed?" Exists="[blnDOLDemo]" sap:VirtualizedContainerService.HintSize="431.3333333333333,116" sap2010:WorkflowViewState.IdRef="UiElementExists_15">
+    <ui:UiElementExists DisplayName="DOL_Demo Displayed?" Exists="[blnDOLDemo]" sap:VirtualizedContainerService.HintSize="516.6666666666666,116" sap2010:WorkflowViewState.IdRef="UiElementExists_15">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9bb1536e-1605-4472-b2e4-0fb603a3f4dc" InformativeScreenshot="d6106bf7873009e49fc36be0705caf2d" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='DOL_Demo' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_DOLDemoPanelDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[blnDOLDemo]" DisplayName="If DOL Demo Panel displayed?" sap:VirtualizedContainerService.HintSize="431.3333333333333,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_10">
+    <If Condition="[blnDOLDemo]" DisplayName="If DOL Demo Panel displayed?" sap:VirtualizedContainerService.HintSize="516.6666666666666,2932" sap2010:WorkflowViewState.IdRef="If_10">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" RepeatForever="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="GL Account Fields displayed?" sap:VirtualizedContainerService.HintSize="679.3333333333334,5223.333333333333" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1">
+        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" RepeatForever="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="GL Account Fields displayed?" sap:VirtualizedContainerService.HintSize="434,2662.6666666666665" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1">
           <ui:OnUiElementAppear.Body>
-            <Sequence DisplayName="Enter GL Account combined fields" sap:VirtualizedContainerService.HintSize="645.3333333333334,5037.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Enter GL Account combined fields" sap:VirtualizedContainerService.HintSize="400,2476.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Boolean" Name="blnAgencyErrorDisplayed" />
                 <Variable x:TypeArguments="x:Boolean" Name="blnFundWindowDisplayed" />
@@ -294,7 +296,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="Press tab key at Future3 field" sap:VirtualizedContainerService.HintSize="603.3333333333334,165.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="tab" KeyModifiers="None" SendWindowMessages="True" SpecialKey="True">
+              <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="Press tab key at Future3 field" sap:VirtualizedContainerService.HintSize="358,165.33333333333334" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="tab" KeyModifiers="None" SendWindowMessages="True" SpecialKey="True">
                 <ui:SendHotkey.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="50046626-55c2-468d-bc8b-7631826495c8" InformativeScreenshot="5e7791a70da413ce93043772cf982f65" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='DOL_Demo' role='internal frame' /&gt;&lt;java name='Future3 REQUIRED List Values' role='text' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -312,7 +314,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:SendHotkey>
-              <ui:UiElementExists DisplayName="Error Displayed?" Exists="[blnAgencyErrorDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists DisplayName="Error Displayed?" Exists="[blnAgencyErrorDisplayed]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a0c66630-e793-4247-b9a5-8b4eac55e8d4" InformativeScreenshot="60a7c6ebb6f0c452fccaeae977bec8df" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Error Please enter a value between 05 and 29.' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_AgencyErrorDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -323,10 +325,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnAgencyErrorDisplayed]" DisplayName="If AgencyErrorDisplayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,639.3333333333334" sap2010:WorkflowViewState.IdRef="If_1">
+              <If Condition="[blnAgencyErrorDisplayed]" DisplayName="If AgencyErrorDisplayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -378,7 +380,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Fund Window Displayed?" Exists="[blnFundWindowDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,62.666666666666664" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+              <ui:UiElementExists DisplayName="Fund Window Displayed?" Exists="[blnFundWindowDisplayed]" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="82b5004c-144a-4a69-bb89-c297f89eaf9e" InformativeScreenshot="ad915c068d9d988b6be35a77a925b6bd" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Fund' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_FundWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -389,7 +391,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnFundWindowDisplayed]" DisplayName="If FundWindowDisplayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[blnFundWindowDisplayed]" DisplayName="If FundWindowDisplayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -415,7 +417,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Fiscal Year Error displayed?" Exists="[blnFiscalYearError]" sap:VirtualizedContainerService.HintSize="603.3333333333334,62.666666666666664" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+              <ui:UiElementExists DisplayName="Fiscal Year Error displayed?" Exists="[blnFiscalYearError]" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7ae5f5fa-5c5e-4c2b-9f63-22e904df5929" InformativeScreenshot="a37e7ce29a70f71318295dd2d1c2bbe3" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Error APP-FND-01260: Valid characters are 0-9&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Cause: You may enter only the specified characters in this field. You entered a character(s) not in the list.&amp;#xD;&amp;#xA;&amp;#xD;&amp;#xA;Action: Re-enter your value using the valid characters.' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_FiscalYearErrorDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -426,7 +428,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnFiscalYearError]" DisplayName="If Fiscal Year Error Displayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_3">
+              <If Condition="[blnFiscalYearError]" DisplayName="If Fiscal Year Error Displayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -575,10 +577,10 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:RetryScope>
-                      <If Condition="[blnGLAccountWindow]" DisplayName="If Error pop up appeared?" sap:VirtualizedContainerService.HintSize="416.6666666666667,385.3333333333333" sap2010:WorkflowViewState.IdRef="If_11">
+                      <If Condition="[blnGLAccountWindow]" DisplayName="If Error pop up appeared?" sap:VirtualizedContainerService.HintSize="416.6666666666667,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_11">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -705,7 +707,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Program Project Displayed?" Exists="[blnProgramProject]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+              <ui:UiElementExists DisplayName="Program Project Displayed?" Exists="[blnProgramProject]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="83d808aa-2767-4bee-b6bd-47f32b98ae58" InformativeScreenshot="d178897adabe670d4c28b2ba868c74ba" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Program Project' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_ProgramProjectWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -716,10 +718,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnProgramProject]" DisplayName="If Program Project Window Displayed?" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_4">
+              <If Condition="[blnProgramProject]" DisplayName="If Program Project Window Displayed?" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -742,7 +744,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="AcivityWindowDisplayed" Exists="[blnAcivityDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+              <ui:UiElementExists DisplayName="AcivityWindowDisplayed" Exists="[blnAcivityDisplayed]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ea67ae24-287b-424d-aa04-932657c74a9d" InformativeScreenshot="88b07af760756e2e3dc516cbfe5453fc" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Activity' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_AcitivityWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -753,10 +755,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnAcivityDisplayed]" DisplayName="If Activity Window Displayed?" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+              <If Condition="[blnAcivityDisplayed]" DisplayName="If Activity Window Displayed?" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -779,7 +781,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Managing unit Displayed?" Exists="[blnManagingUnit]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
+              <ui:UiElementExists DisplayName="Managing unit Displayed?" Exists="[blnManagingUnit]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="58bb83d9-d4af-4a0e-9765-7ed65206f612" InformativeScreenshot="71d975ce573ec0232e0f6526a4ceabb8" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Managing unit' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_ManagingUnitWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -790,10 +792,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnManagingUnit]" DisplayName="If Managing Unit Window Displayed?" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_6">
+              <If Condition="[blnManagingUnit]" DisplayName="If Managing Unit Window Displayed?" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_6">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -816,7 +818,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Cost Center Window Displayed?" Exists="[blnCostCenterDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+              <ui:UiElementExists DisplayName="Cost Center Window Displayed?" Exists="[blnCostCenterDisplayed]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8a5aedaf-486e-4b63-9efb-669b45490d18" InformativeScreenshot="f3fcddbd46d912a0451a3a63eea3fa58" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Cost Center' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_CostCenterWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -827,10 +829,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnCostCenterDisplayed]" DisplayName="If Cost Center Window Displayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_7">
+              <If Condition="[blnCostCenterDisplayed]" DisplayName="If Cost Center Window Displayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -853,7 +855,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="Object Class Displayed?" Exists="[blnObjectClassDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
+              <ui:UiElementExists DisplayName="Object Class Displayed?" Exists="[blnObjectClassDisplayed]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="070e2665-5216-4db9-a394-eb1ec271a36e" InformativeScreenshot="4d643dfdd19bcd986181e057861c11a6" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='Object Class' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_ObjectClassWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -864,10 +866,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnObjectClassDisplayed]" DisplayName="If Object Class Displayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_8">
+              <If Condition="[blnObjectClassDisplayed]" DisplayName="If Object Class Displayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -890,7 +892,7 @@
                   </Sequence>
                 </If.Else>
               </If>
-              <ui:UiElementExists DisplayName="GL Account Window Displayed?" Exists="[blnGLAccountDisplayed]" sap:VirtualizedContainerService.HintSize="603.3333333333334,116" sap2010:WorkflowViewState.IdRef="UiElementExists_11">
+              <ui:UiElementExists DisplayName="GL Account Window Displayed?" Exists="[blnGLAccountDisplayed]" sap:VirtualizedContainerService.HintSize="358,116" sap2010:WorkflowViewState.IdRef="UiElementExists_11">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2d1ee57-32da-4d0c-956d-0b4cca5de36d" InformativeScreenshot="22ca92c608bbdc7185aa592e8d727825" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Oracle Applications - EBSDB' /&gt;&lt;java name='Enter Funds Distributions (DOL_Ledger)' role='internal frame' /&gt;&lt;java name='GL Account' role='internal frame' /&gt;" TimeoutMS="[CInt(in_Config(&quot;TimeOut_GLAccountWindowDisplayed&quot;).ToString)]" WaitForReady="INTERACTIVE" />
                 </ui:UiElementExists.Target>
@@ -901,10 +903,10 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If Condition="[blnGLAccountDisplayed]" DisplayName="If GL Account Window Displayed" sap:VirtualizedContainerService.HintSize="603.3333333333334,393.3333333333333" sap2010:WorkflowViewState.IdRef="If_9">
+              <If Condition="[blnGLAccountDisplayed]" DisplayName="If GL Account Window Displayed" sap:VirtualizedContainerService.HintSize="358,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -954,7 +956,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[blnDOLDemo]" DisplayName="If GL Account window displayed still?" sap:VirtualizedContainerService.HintSize="431.3333333333333,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_12">
+    <If Condition="[blnDOLDemo]" DisplayName="If GL Account window displayed still?" sap:VirtualizedContainerService.HintSize="516.6666666666666,62.666666666666664" sap2010:WorkflowViewState.IdRef="If_12">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

@@ -3,12 +3,19 @@
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dtMain" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="out_GeneratedTransactionNumber" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strApportionmentCategory" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strTreasuryAccountSymbol" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strGetDirectorReimbursableCode" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strDocumentTotal" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strStatus" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strSource" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strAmountForDistribution" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strDecisionMsg" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>880,458</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>796,458</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -91,6 +98,7 @@
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="400,378" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -114,8 +122,36 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke EnterFundDistributions workflow" sap:VirtualizedContainerService.HintSize="358,124" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="WorkFlows\EnterFundDistributions.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtBatch">[dtBatch]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtBatch">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtBatch" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strApportionmentCategory">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strApportionmentCategory" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strTreasuryAccountSymbol">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strTreasuryAccountSymbol" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strGetDirectorReimbursableCode">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strGetDirectorReimbursableCode" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strDocumentTotal">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDocumentTotal" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strStatus">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strStatus" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strSource">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strSource" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strAmountForDistribution">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strAmountForDistribution" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_strDecisionMsg">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_strDecisionMsg" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
