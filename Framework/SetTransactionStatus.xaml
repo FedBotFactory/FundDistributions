@@ -210,7 +210,7 @@
                 <OutArgument x:TypeArguments="x:Int32">[io_SuccessTransactionsCount]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[io_TransactionNumber-1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[io_SuccessTransactionsCount+1]</InArgument>
               </Assign.Value>
             </Assign>
           </Sequence>
@@ -385,7 +385,7 @@
                     <OutArgument x:TypeArguments="x:Int32">[io_BRECount]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int32">[io_TransactionNumber-1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32">[io_BRECount+1]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>

@@ -7,7 +7,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Used to indicate whether the retry procedure is managed by an Orchestrator queue." Name="in_QueueRetry" Type="InArgument(x:Boolean)" />
     <x:Property Name="io_SECount" Type="InOutArgument(x:Int32)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>936.6666666666666,952.6666666666666</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,952.6666666666666</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <VisualBasic.Settings>Assembly references and imported namespaces for internal implementation</VisualBasic.Settings>
   <TextExpression.NamespacesForImplementation>
@@ -157,7 +157,7 @@
                               <OutArgument x:TypeArguments="x:Int32">[io_SECount]</OutArgument>
                             </Assign.To>
                             <Assign.Value>
-                              <InArgument x:TypeArguments="x:Int32">[io_TransactionNumber-1]</InArgument>
+                              <InArgument x:TypeArguments="x:Int32">[io_SECount+1]</InArgument>
                             </Assign.Value>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
